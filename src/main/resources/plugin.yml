@@ -1,0 +1,4 @@
+name: sakura
+version: '${project.version}'
+main: com.github.sakakiaruka.Sakura
+api-version: '1.20'
