@@ -1,6 +1,5 @@
 package com.github.sakakiaruka;
 
-import com.github.sakakiaruka.listeners.TreeGrowListener;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -11,8 +10,6 @@ public final class Sakura extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        this.setInstance();
-        getServer().getPluginManager().registerEvents(new TreeGrowListener(), this);
     }
 
     @Override
