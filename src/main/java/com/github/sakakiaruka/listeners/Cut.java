@@ -56,15 +56,6 @@ public class Cut implements Listener {
         return false;
     }
 
-    private boolean isLeaf(Block block) {
-        Material material = block.getType();
-        String name = material.name();
-        if (name.matches("^([A-Z_]+)_LEAVES$")) return true;
-        if (material.equals(Material.WARPED_WART_BLOCK)) return true;
-        if (material.equals(Material.NETHER_WART_BLOCK)) return true;
-        return false;
-    }
-
     private void search(Block start, Set<Block> blocks, Set<Block> visited, List<Block> stack) {
         int x = start.getX();
         int y = start.getY() + 1;
