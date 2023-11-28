@@ -7,10 +7,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class Sakura extends JavaPlugin {
 
     public static FileConfiguration DEFAULT_CONFIG;
+    public static Sakura instance;
 
     @Override
     public void onEnable() {
         // Plugin startup logic
+        setInstance();
         getServer().getPluginManager().registerEvents(new Cut(), this);
     }
 
@@ -19,7 +21,10 @@ public final class Sakura extends JavaPlugin {
         // Plugin shutdown logic
     }
 
+//    private void setInstance() {
+//        DEFAULT_CONFIG = this.getConfig();
+//    }
     private void setInstance() {
-        DEFAULT_CONFIG = this.getConfig();
+        instance = this;
     }
 }
