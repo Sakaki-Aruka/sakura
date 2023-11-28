@@ -52,7 +52,7 @@ public class Cut implements Listener {
         Material material = block.getType();
         String name = material.name();
         if (name.matches("^([A-Z_]+)_LOG$")) return true;
-        if (name.matches("^$([A-Z_]+)_STEM$")) return true;
+        if (name.matches("^([A-Z_]+)_STEM$")) return true;
         return false;
     }
 
