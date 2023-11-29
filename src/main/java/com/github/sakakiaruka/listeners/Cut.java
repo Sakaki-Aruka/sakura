@@ -13,6 +13,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static com.github.sakakiaruka.SettingsLoad.BLOCKS_LIMIT;
+
 public class Cut implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
@@ -24,7 +26,7 @@ public class Cut implements Listener {
         Set<Block> blocks = new HashSet<>();
         Set<Block> visited = new HashSet<>();
         List<Block> stack = new ArrayList<>();
-        search(target, blocks, visited, stack);
+        search(target, blocks, visited, stack, 0);
 
         blocks.forEach(block -> {
             block.getDrops().forEach(item -> cutter.getWorld().dropItem(cutter.getLocation(), item));
@@ -40,13 +42,10 @@ public class Cut implements Listener {
         return block.getType().name().matches("^([A-Z_]+)_(LEAVES|WART_BLOCK)$");
     }
 
-    private void search(Block start, Set<Block> blocks, Set<Block> visited, List<Block> stack) {
-        int x = start.getX();
-        int y = start.getY();
-        int z = start.getZ();
-        World world = start.getWorld();
-
+    private void search(Block start, Set<Block> blocks, Set<Block> visited, List<Block> stack, int count) {
         stack.remove(start);
+        count++;
+        if (count == BLOCKS_LIMIT) return;
         if (isLog(start) || isLeaf(start)) {
             blocks.add(start);
             visited.add(start);
@@ -54,9 +53,9 @@ public class Cut implements Listener {
         for (int dx = -1; dx <= 1; dx++) {
             for (int dy = -1; dy <= 1; dy++) {
                 for (int dz = -1; dz <= 1; dz++) {
-                    Block block = world.getBlockAt(x+dx, y+dy, z+dz);
+                    Block block = start.getWorld().getBlockAt(start.getX()+dx, start.getY()+dy, start.getZ()+dz);
                     if ((isLog(block) || isLeaf(block)) && !stack.contains(block) && !visited.contains(block)) stack.add(0, block);
-                    if (!stack.isEmpty()) search(stack.get(0), blocks, visited, stack);
+                    if (!stack.isEmpty()) search(stack.get(0), blocks, visited, stack, count);
                 }
             }
         }
