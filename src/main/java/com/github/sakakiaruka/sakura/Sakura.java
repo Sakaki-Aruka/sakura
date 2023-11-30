@@ -1,6 +1,6 @@
-package com.github.sakakiaruka;
+package com.github.sakakiaruka.sakura;
 
-import com.github.sakakiaruka.listeners.Cut;
+import com.github.sakakiaruka.sakura.sakura.listeners.Cut;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 

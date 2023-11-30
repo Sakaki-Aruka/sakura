@@ -1,7 +1,7 @@
-package com.github.sakakiaruka.listeners;
+package com.github.sakakiaruka.sakura.sakura.listeners;
 
+import com.github.sakakiaruka.sakura.SettingsLoad;
 import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import static com.github.sakakiaruka.SettingsLoad.BLOCKS_LIMIT;
 
 public class Cut implements Listener {
     @EventHandler
@@ -35,7 +33,7 @@ public class Cut implements Listener {
     }
 
     private boolean isLog(Block block) {
-        return block.getType().name().matches("^([A-Z_]+)_(LOG|STEM)$");
+        return block.getType().name().matches("^([A-Z_]+)_(LOG|STEM|WOOD)$");
     }
 
     private boolean isLeaf(Block block) {
@@ -45,7 +43,7 @@ public class Cut implements Listener {
     private void search(Block start, Set<Block> blocks, Set<Block> visited, List<Block> stack, int count) {
         stack.remove(start);
         count++;
-        if (count == BLOCKS_LIMIT) return;
+        if (count == SettingsLoad.BLOCKS_LIMIT) return;
         if (isLog(start) || isLeaf(start)) {
             blocks.add(start);
             visited.add(start);
