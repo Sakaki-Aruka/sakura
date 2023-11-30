@@ -1,3 +1,3 @@
-com\github\sakakiaruka\Sakura.class
-com\github\sakakiaruka\listeners\Cut.class
-com\github\sakakiaruka\SettingsLoad.class
+com\github\sakakiaruka\sakura\Sakura.class
+com\github\sakakiaruka\sakura\SettingsLoad.class
+com\github\sakakiaruka\sakura\sakura\listeners\Cut.class

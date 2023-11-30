@@ -20,10 +20,6 @@ public final class Sakura extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
     }
-
-//    private void setInstance() {
-//        DEFAULT_CONFIG = this.getConfig();
-//    }
     private void setInstance() {
         instance = this;
     }
